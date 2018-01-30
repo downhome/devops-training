@@ -4,3 +4,20 @@
 # the files in that directory.
 # Usage: ./lsd ~/folder/subfolder1/subfolder2
 
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied only one directory argument should provided"
+
+elif [ $# -gt 1 ]
+  then
+    echo "in order to execute the script you only need one directory agrument"
+
+elif [[ -d $1 ]];
+  then
+    ls -l $1
+
+else
+    echo "$1  is not valid  directory. please enter correct directory folders
+          For Example:~/folder/subfolder1/subfolder2"
+
+fi
