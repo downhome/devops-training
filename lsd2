@@ -25,17 +25,23 @@ elif [ $# -gt 2 ] || [ $#  -le 1 ]
 fi
 
   case $2  in
-        -t | -time )          
+         -t  | -time )          
                                 ls -lt $1
                                 ;;
-        -rt | -rtime )         
+         -rt | -rtime )         
                                 ls -rlt $1
                                 ;;
-        -S | -size )
+         -S  | -size )
                                 ls -lS $1
                                 ;;
-        -rS | -rsize )
+         -rS | -rsize )
                                 ls -rlS $1
+                                ;;
+         -sort )
+                                ls -l $1 |  sort -f
+                                ;;
+         -rsort )
+                                ls -l $1 |  sort -rf
                                 ;;
        
         * )                   
