@@ -31,8 +31,15 @@ fi
         -rt | -rtime )         
                                 ls -rlt $1
                                 ;;
+        -S | -size )
+                                ls -lS $1
+                                ;;
+        -rS | -rsize )
+                                ls -rlS $1
+                                ;;
        
         * )                   
                                exit
                                 ;;
+
     esac
