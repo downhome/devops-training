@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# lsd2: Script that accepts two arguments and lists  the files in that directory.
+# Usage: ./lsd2 {folder} {options}
+# options:
+#   sort: sorted alphabatically ASC
+#   rsort: sorted alphabatically DESC
+#   time: sorted by time ASC
+#   rtime: sorted by time DESC
+#   size: sorted by size ASC
+#   rsize: sorted by size DESC
+
+
+
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied only one directory argument should provided"
+
+
+elif [ $# -gt 2  ]
+  then
+    echo "in order to execute the script you only need two  agrument\n
+          first argument directory and the second one is an  option"
+else
+$1 =/
+ls -l $1
+
+fi
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# lsd: Script that accepts single argument (directory path) and lists
+# the files in that directory.
+# Usage: ./lsd ~/folder/subfolder1/subfolder2
+
