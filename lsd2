@@ -17,13 +17,22 @@ if [ $# -eq 0 ]
     echo "No arguments supplied only one directory argument should provided"
 
 
-elif [ $# -gt 2  ]
+elif [ $# -gt 2 ] || [ $#  -le 1 ]
   then
-    echo "in order to execute the script you only need two  agrument\n
+    echo "in order to execute the script you need  two  agrument
           first argument directory and the second one is an  option"
-else
-$1 =/
-ls -l $1
 
 fi
 
+  case $2  in
+        -t | -time )          
+                                ls -lt $1
+                                ;;
+        -rt | -rtime )         
+                                ls -rlt $1
+                                ;;
+       
+        * )                   
+                               exit
+                                ;;
+    esac
