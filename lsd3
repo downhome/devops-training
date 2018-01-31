@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# lsd3: Script that accepts one argument which is a directory
+# Usage: ./lsd3 {folder}
+# The result should be the list of each file where the colors of the files alternate 
+# between regular color and red.
+
