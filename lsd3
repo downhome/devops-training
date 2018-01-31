@@ -5,3 +5,10 @@
 # The result should be the list of each file where the colors of the files alternate 
 # between regular color and red.
 
+
+RED=`tput setaf 1`
+RESET=`tput sgr0`
+
+echo -e " ${RED} test color using tput, 
+ansi escape code (e.g. \E[31;1m for red) 
+not supported on OSX${RESET} "
