@@ -12,3 +12,5 @@ RESET=`tput sgr0`
 echo -e " ${RED} test color using tput, 
 ansi escape code (e.g. \E[31;1m for red) 
 not supported on OSX${RESET} "
+
+ls -l $1 | while read x; do echo $x; done
