@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+check_delayed_jobs(){
+
+
+VORTEX_DELAYED_JOB='vortex/delayed_job'
+DLM_CORE_DELAYED_JOB='dlm-core/delayed_job'
+ 
+if  ps ax | grep -v grep | grep $VORTEX_DELAYED_JOB > /dev/null 
+then
+    echo "$VORTEX_DELAYED_JOB is running"
+else
+    echo "$VORTEX_DELAYED_JOB is not running"
+
+curl -X POST --data-urlencode "payload={\"channel\": \"#testchat\", \"username\": \"devopsbot\", \"text\": \"This Process  $VORTEX_DELAYED_JOB is  down.\", \"icon_emoji\": \":hand:\"}" https://hooks.slack.com/services/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
+
+    
+fi
+
+if  ps ax | grep -v grep | grep $DLM_CORE_DELAYED_JOB > /dev/null
+then
+    echo "$DLM_CORE_DELAYED_JOB is  running"
+else
+    echo "$DLM_CORE_DELAYED_JOB is not running"
+
+curl -X POST --data-urlencode "payload={\"channel\": \"#testchat\", \"username\": \"devopsbot\", \"text\": \"This Process  $DLM_CORE_DELAYED_JOB is  down.\", \"icon_emoji\": \":hand:\"}" https://hooks.slack.com/services/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
+
+
+fi
+
+}
+check_delayed_jobs
