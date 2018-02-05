@@ -1,28 +1,15 @@
-
-#this  script take one argument which is process name to check
-#if the delayed jobs are dead and send a notification to slack #dlm-alerts channel.
-#The two delayed jobs are:
-#vortex/delayed_job
-#dlm-core/delayed_job
+#!/usr/bin/env bash
+# This script checks for dead delayed job processes and notifies slack when it detects a dead processj
 
 check_delayed_jobs(){
-
-if  [ "$#" -eq 0 ];then
-exit 0
-else
-echo "checking .."
-fi
-
-if  ps ax | grep -v grep | grep $1  > /dev/null
-then
-    echo "$1 is running"
-else
-    echo "$1 is not running"
-
-curl -X POST --data-urlencode "payload={\"channel\": \"#testchat\", \"username\": \"devopsbot\", \"text\": \"This Process  $1  is  down.\", \"icon_emoji\": \":hand:\"}" https://hooks.slack.com/services/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
-
-
-fi
-
+  PROCESS_INFO=`ps ax | grep -v grep | grep $1`
+  if [ "$PROCESS_INFO" == "" ]
+  then
+    PAYLOAD="payload={\"channel\": \"#testchat\", \"username\": \"devopsbot\", \"text\": \"This Process  $1  is  down.\", \"icon_emoji\": \":hand:\"}"
+    URL="https://hooks.slack.com/services/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"
+    curl -X POST --data-urlencode "$PAYLOAD" $URL
+  fi
 }
-check_delayed_jobs $1
+
+check_delayed_jobs 'vortex/delayed_job'
+check_delayed_jobs 'dlm-core/delayed_job'
