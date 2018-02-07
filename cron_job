@@ -5,7 +5,7 @@ check_delayed_jobs(){
   PROCESS_INFO=`ps ax | grep -v grep | grep $1`
   if [ "$PROCESS_INFO" == "" ]
   then
-    PAYLOAD="payload={\"channel\": \"#testchat\", \"username\": \"devopsbot\", \"text\": \"This Process  $1  is  down.\", \"icon_emoji\": \":hand:\"}"
+    PAYLOAD="payload={\"channel\": \"#dlm-alerts\", \"username\": \"devopsbot\", \"text\": \"This Process  $1  is  down.\", \"icon_emoji\": \":hand:\"}"
     URL="https://hooks.slack.com/services/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"
     curl -X POST --data-urlencode "$PAYLOAD" $URL
   fi

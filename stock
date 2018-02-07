@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# ssh script to give stock quote
+# stock
+# This script accepts a single parameter representing a stock symbol (INTC) and will show the current stock information on that stock symbol.
+# To run: ./stock INTC
+
+curl https://api.iextrading.com/1.0/stock/$1/quote | jq '.latestPrice'
